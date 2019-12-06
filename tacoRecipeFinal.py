@@ -1,42 +1,42 @@
 import requests
 import docx
 
-document = docx.Document()
-document.add_paragraph('Random Taco Cookbook', 'Title')
-document.add_picture('resizedTaco.jpg')
-document.add_paragraph('Credits', 'Heading1')
-document.add_paragraph('Photo: Miguel Andrade', 'List Bullet')
-document.add_paragraph('Tacos from random taco API URL: https://taco-1150.herokuapp.com/random/?full_taco=true', 'List Bullet')
-document.add_paragraph('Code by Jason Platzer', 'List Bullet')
-document.add_page_break()
-for responses in range(3):
-    response = requests.get('https://taco-1150.herokuapp.com/random/?full_taco=true').json()
-    base = response['base_layer']['recipe']
-    seasoning = response['seasoning']['recipe']
-    mix = response['mixin']['recipe']
-    condiment = response['condiment']['recipe']
-    shell = response['shell']['recipe']
-    base_name = response['base_layer']['name']
-    seasoning_name = response['seasoning']['name']
-    mixin_name = response['mixin']['name']
-    condiment_name = response['condiment']['name']
-    shell_name = response['shell']['name']
-    p = document.add_paragraph(base_name, 'Title')
-    p.add_run(' with ')
-    p.add_run(seasoning_name)
-    p.add_run(' and ' )
-    p.add_run(condiment_name)
-    p.add_run(' in ')
-    p.add_run(shell_name)
-    document.add_paragraph('Base layer', 'Heading1')
-    document.add_paragraph(base)
-    document.add_paragraph('Seasoning', 'Heading1')
-    document.add_paragraph(seasoning)
-    document.add_paragraph('Mixin', 'Heading1')
-    document.add_paragraph(mix)
-    document.add_paragraph('Condiment', 'Heading1')
-    document.add_paragraph(condiment)
-    document.add_paragraph('Shell')
-    document.add_paragraph(shell)
-    document.add_page_break()
-    document.save('RandomTacoRecipeBook.docx')
+document = docx.Document()   #creating a docx document
+document.add_paragraph('Random Taco Cookbook', 'Title')   #adding the title of the book
+document.add_picture('resizedTaco.jpg')   #adding picture
+document.add_paragraph('Credits', 'Heading1')   #add the credits heading
+document.add_paragraph('Photo: Miguel Andrade', 'List Bullet')   #adding first bullet point
+document.add_paragraph('Tacos from random taco API URL: https://taco-1150.herokuapp.com/random/?full_taco=true', 'List Bullet')   #adding second bullet point
+document.add_paragraph('Code by Jason Platzer', 'List Bullet')   #adding third bullet point
+document.add_page_break()   #going to next page
+for responses in range(3):   #a for loop for chapters in the book
+    response = requests.get('https://taco-1150.herokuapp.com/random/?full_taco=true').json()   #getting the data from api
+    base = response['base_layer']['recipe']   #putting the recipe of the base layer into a variable
+    seasoning = response['seasoning']['recipe']   #putting the recipe of the seasoning into a variable
+    mix = response['mixin']['recipe']   #putting the recipe of the mix into a variable
+    condiment = response['condiment']['recipe']   #putting the recipe of the condiment into a variable
+    shell = response['shell']['recipe']   #putting the recipe of the shell into a variable
+    base_name = response['base_layer']['name']   #putting name of base into a variable
+    seasoning_name = response['seasoning']['name']   #putting the name of the seasoning into a variable
+    mixin_name = response['mixin']['name']   #putting the name of the mix into a variable
+    condiment_name = response['condiment']['name']   #putting the name of the condiment into a variable
+    shell_name = response['shell']['name']   #putting the name of the shell into a variable
+    p = document.add_paragraph(base_name, 'Title')# adding the name of the base to a  title paragraph in document
+    p.add_run(' with ')   #adding a with to the title paragraph
+    p.add_run(seasoning_name)   #adding the name of seasoning to the title paragraph
+    p.add_run(' and ' )    #adding an and to the title paragraph
+    p.add_run(condiment_name)   #addoing the name of the condiment to the title paragraph
+    p.add_run(' in ')    #adding an in to the title paragraph
+    p.add_run(shell_name)   #adding the name of the shell to the title paragraph
+    document.add_paragraph('Base layer', 'Heading1')   #ddding a base layer header to go before recipe of the base layer
+    document.add_paragraph(base)   #adding the recipe of the base layer to the document
+    document.add_paragraph('Seasoning', 'Heading1')    #adding a seasoning header before the recipe
+    document.add_paragraph(seasoning)    #adding the seasoning recipe to the document
+    document.add_paragraph('Mixin', 'Heading1')     #adding a mixin header before the recipe
+    document.add_paragraph(mix)    #adding the recipe of the mix to the document
+    document.add_paragraph('Condiment', 'Heading1')   #adding a condiment header before the recipe
+    document.add_paragraph(condiment)   #adding the recipe of the condiment to the document
+    document.add_paragraph('Shell')     #adding a shell header before the recipe
+    document.add_paragraph(shell)    #adding the recipe of the shell to the document
+    document.add_page_break()   #adding a page break to start the next stuff on a new page
+    document.save('RandomTacoRecipeBook.docx')   #saving document
