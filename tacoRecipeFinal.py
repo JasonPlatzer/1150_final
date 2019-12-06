@@ -15,7 +15,7 @@ for responses in range(3):
     mix = response['mixin']['recipe']
     condiment = response['condiment']['recipe']
     shell = response['shell']['recipe']
-    p = document.add_paragraph(base)
+    p = document.add_paragraph()
     document.add_paragraph('Base layer', 'Heading1')
     document.add_paragraph(base)
     document.add_paragraph('Seasoning', 'Heading1')
