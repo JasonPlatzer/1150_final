@@ -1,3 +1,4 @@
+'''This program will take a jpeg and resize it and then write random taco cookbook on it'''
 from PIL import Image, ImageDraw, ImageFont   #importing what I need to be able to do what I want with picture
 
 image = Image.open('taco.jpg')   #making it so that i can change the picture of taco.jpg
