@@ -1,6 +1,8 @@
+''' This program will create a random taco recipe cookbook using random recipes from an api. It will create a word document'''
 import requests
 import docx
 
+#This block of code makes the front page.
 document = docx.Document()   #creating a docx document
 document.add_paragraph('Random Taco Cookbook', 'Title')   #adding the title of the book
 document.add_picture('resizedTaco.jpg')   #adding picture
@@ -9,6 +11,7 @@ document.add_paragraph('Photo: Miguel Andrade', 'List Bullet')   #adding first b
 document.add_paragraph('Tacos from random taco API URL: https://taco-1150.herokuapp.com/random/?full_taco=true', 'List Bullet')   #adding second bullet point
 document.add_paragraph('Code by Jason Platzer', 'List Bullet')   #adding third bullet point
 document.add_page_break()   #going to next page
+#This block of code is a for loop to get the names and recipes of the components and put them into variables. Then write each chapter of the cookbook.
 for responses in range(3):   #a for loop for chapters in the book
     response = requests.get('https://taco-1150.herokuapp.com/random/?full_taco=true').json()   #getting the data from api
     base = response['base_layer']['recipe']   #putting the recipe of the base layer into a variable
